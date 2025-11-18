@@ -16,9 +16,9 @@ opt.autoindent = true -- copy indent from current line when starting new one
 opt.relativenumber = true  -- set relative line number
 opt.number = true -- indents current line number to the left
 opt.linebreak = true-- line breaks if max window width is reached
-opt.cursorline = true -- highlights current line
-opt.timeoutlen = 200
-opt.ttimeoutlen = 1
+opt.cursorline = false -- highlights current line
+opt.guicursor = "n-v-c-sm:block,i-ci-ve:block,r-cr-o:block"
+
 -- (search settings)
 opt.ignorecase = true -- case-insensitive when searching
 opt.smartcase = true -- case-sensitive when including casing
@@ -29,7 +29,6 @@ opt.background = "dark" -- switch colour scheme to light or dark using :backgrou
 opt.signcolumn = "yes" -- shift indent
 
 -- (backspacing, clipboard & splitting windows)
-opt.backspace = "indent,eol,start"
 opt.clipboard:append("unnamedplus") -- use system clipboard as default register
 opt.splitright = true -- split vertical window to the right
 opt.splitbelow = true -- split horizontal window to the bottom

@@ -1,27 +1,32 @@
--- lua/ck/plugins/colorscheme.lua
-
--- Load and apply the catppuccin colorscheme with Mocha flavor
 return {
-    --"uncleTen276/dark_flat.nvim",
-    --"kvrohit/mellow.nvim",
-    -- "EdenEast/nightfox.nvim",
-    -- "HoNamDuong/hybrid.nvim",
-    -- "projekt0n/github-nvim-theme",
-    -- "slugbyte/lackluster.nvim",
-    "ramojus/mellifluous.nvim",
+  -- Lush is a required dependency for desolate
+  {
+    "rktjmp/lush.nvim",
+    lazy = true,
+  },
 
-    priority = 1000,  -- Make sure it loads early to apply the theme
-
+  -- Desolate colorscheme
+  {
+    "He4eT/desolate.nvim",
+    lazy = false,
+    priority = 1000,
+    dependencies = { "rktjmp/lush.nvim" },
     config = function()
-        vim.cmd("colorscheme mellifluous")
-        -- vim.cmd.colorscheme("lackluster")
-        -- vim.cmd('colorscheme github_light')        
-        -- vim.cmd("colorscheme catppuccin")
-        -- vim.cmd("colorscheme dark_flat")
-        -- vim.cmd("colorscheme mellow")
-        -- vim.cmd("colorscheme hybrid")
-        -- vim.cmd("colorscheme carbonfox")
-        -- vim.api.nvim_set_hl(0, "CursorLine", { bg = "#1f1f1f" }) -- or a shade you prefer
+      vim.opt.termguicolors = true
+      vim.opt.background = "dark"
 
-    end
+      -- Set colorscheme
+      vim.cmd("colorscheme desolate")
+
+      -- Force black background
+      vim.cmd("hi Normal guibg=#000000")
+
+      -- Optional: minimal highlight overrides
+      vim.cmd("hi Comment guifg=#444444")    -- muted blue-grey
+      vim.cmd("hi Identifier guifg=#c0caf5") -- light bluish white
+      vim.cmd("hi Function guifg=#7aa2f7")   -- soft blue
+      vim.cmd("hi Statement guifg=#bb9af7") 
+    vim.api.nvim_set_hl(0, "MatchParen", { bg = "#5f87ff", fg = "NONE", underline = false })
+    end,
+  },
 }
