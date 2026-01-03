@@ -4,32 +4,40 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 -- lua <-> vim
-local opt = vim.opt
 
 -- (tabs & indentation)
-opt.tabstop = 4 -- 4 spaces for tabs
-opt.shiftwidth = 4 -- 4 spaces for indent width
-opt.expandtab = true -- expand tab to spaces
-opt.autoindent = true -- copy indent from current line when starting new one
+vim.opt.tabstop = 4 -- 4 spaces for tabs
+vim.opt.shiftwidth = 4 -- 4 spaces for indent width
+vim.opt.expandtab = true -- expand tab to spaces
+vim.opt.autoindent = true -- copy indent from current line when starting new one
 
 -- (line numbering & wrapping) 
-opt.relativenumber = true  -- set relative line number
-opt.number = true -- indents current line number to the left
-opt.linebreak = true-- line breaks if max window width is reached
-opt.cursorline = true -- highlights current line
-opt.timeoutlen = 200
-opt.ttimeoutlen = 1
+vim.opt.relativenumber = true  -- set relative line number
+vim.opt.number = true -- indents current line number to the left
+vim.opt.linebreak = true-- line breaks if max window width is reached
+vim.opt.cursorline = true -- highlights current line
+vim.opt.timeoutlen = 200
+vim.opt.ttimeoutlen = 1
 -- (search settings)
-opt.ignorecase = true -- case-insensitive when searching
-opt.smartcase = true -- case-sensitive when including casing
+vim.opt.ignorecase = true -- case-insensitive when searching
+vim.opt.smartcase = true -- case-sensitive when including casing
+
+
+
+
 
 -- (colouring)
-opt.termguicolors = true
-opt.background = "dark" -- switch colour scheme to light or dark using :background light/dark
-opt.signcolumn = "yes" -- shift indent
+vim.opt.termguicolors = true
+vim.opt.background = "dark" -- switch colour scheme to light or dark using :background light/dark
+vim.opt.signcolumn = "yes" -- shift indent
+
+vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+
+vim.cmd(":hi statusline guibg=None")
 
 -- (backspacing, clipboard & splitting windows)
-opt.backspace = "indent,eol,start"
-opt.clipboard:append("unnamedplus") -- use system clipboard as default register
-opt.splitright = true -- split vertical window to the right
-opt.splitbelow = true -- split horizontal window to the bottom
+vim.opt.backspace = "indent,eol,start"
+vim.opt.clipboard:append("unnamedplus") -- use system clipboard as default register
+vim.opt.splitright = true -- split vertical window to the right
+vim.opt.splitbelow = true -- split horizontal window to the bottom
