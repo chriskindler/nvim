@@ -18,13 +18,10 @@ vim.opt.linebreak = true-- line breaks if max window width is reached
 vim.opt.cursorline = true -- highlights current line
 vim.opt.timeoutlen = 200
 vim.opt.ttimeoutlen = 1
+
 -- (search settings)
 vim.opt.ignorecase = true -- case-insensitive when searching
 vim.opt.smartcase = true -- case-sensitive when including casing
-
-
-
-
 
 -- (colouring)
 vim.opt.termguicolors = true
@@ -35,6 +32,9 @@ vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 
 vim.cmd(":hi statusline guibg=None")
+
+-- block cursor even in insert mode
+vim.opt.guicursor = "a:block"
 
 -- (backspacing, clipboard & splitting windows)
 vim.opt.backspace = "indent,eol,start"

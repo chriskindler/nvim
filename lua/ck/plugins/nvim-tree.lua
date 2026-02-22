@@ -1,41 +1,60 @@
 return {
-    "nvim-tree/nvim-tree.lua",
-    dependencies = "nvim-tree/nvim-web-devicons",
-    config = function()
-        local nvimtree = require("nvim-tree")
+  "nvim-tree/nvim-tree.lua",
+  dependencies = {},
 
-        -- recommended settings from nvim-tree documentation
-        vim.g.loaded_netrw = 1
-        vim.g.loaded_netrwPlugin = 1
-        vim.api.nvim_command('autocmd FileType nerdtree setlocal winhighlight=Normal:Normal')
-  
-        nvimtree.setup({
-            view = {
-                width = 45,
-                relativenumber = true,
-            },
-            actions = {
-                open_file = {
-                    window_picker = {
-                        enable = false,
-                    },
-                },
-            },
-            filters = {
-                custom = { ".DS_Store" },
-            },
-            git = {
-                ignore = false,
-            },
-        })
+  config = function()
+    vim.g.loaded_netrw = 1
+    vim.g.loaded_netrwPlugin = 1
 
-        -- set keymaps
-        local keymap = vim.keymap -- for conciseness
+    local nvimtree = require("nvim-tree")
 
-        keymap.set("n", "<leader>ee", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle file explorer" }) -- toggle file explorer
-        keymap.set("n", "<leader>ef", "<cmd>NvimTreeFindFileToggle<CR>", { desc = "Toggle file explorer on current file" }) -- toggle file explorer on current file
-        keymap.set("n", "<leader>ec", "<cmd>NvimTreeCollapse<CR>", { desc = "Collapse file explorer" }) -- collapse file explorer
-        keymap.set("n", "<leader>er", "<cmd>NvimTreeRefresh<CR>", { desc = "Refresh file explorer" }) -- refresh file explorer
+    nvimtree.setup({
+      view = {
+        width = 45,
+        relativenumber = true,
+      },
 
-    end
+      renderer = {
+        icons = {
+          show = {
+            file = false,
+            folder = false,
+            folder_arrow = false,
+            git = false,
+          },
+        },
+      },
+
+      actions = {
+        open_file = {
+          window_picker = { enable = false },
+        },
+      },
+
+      filters = { custom = { ".DS_Store" } },
+      git = { ignore = false },
+
+      -- This is the key part
+      on_attach = function(bufnr)
+        local api = require("nvim-tree.api")
+
+        -- restore ALL default nvim-tree keymaps (including Enter)
+        api.config.mappings.default_on_attach(bufnr)
+
+        local opts = { buffer = bufnr, noremap = true, silent = true, nowait = true }
+
+        -- your window navigation overrides
+        vim.keymap.set("n", "H", "<C-w>h", opts)
+        vim.keymap.set("n", "J", "<C-w>j", opts)
+        vim.keymap.set("n", "K", "<C-w>k", opts)
+        vim.keymap.set("n", "L", "<C-w>l", opts)
+        end,
+    })
+
+    local keymap = vim.keymap
+    keymap.set("n", "<leader>ee", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle file explorer" })
+    keymap.set("n", "<leader>ef", "<cmd>NvimTreeFindFileToggle<CR>", { desc = "Toggle file explorer on current file" })
+    keymap.set("n", "<leader>ec", "<cmd>NvimTreeCollapse<CR>", { desc = "Collapse file explorer" })
+    keymap.set("n", "<leader>er", "<cmd>NvimTreeRefresh<CR>", { desc = "Refresh file explorer" })
+  end,
 }
