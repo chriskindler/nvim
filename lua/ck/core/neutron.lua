@@ -1,4 +1,4 @@
--- lua/ck/core/hybrid.lua
+-- lua/ck/core/neutron.lua
 local M = {}
 
 local function hl(group, opts)
@@ -10,21 +10,21 @@ function M.apply()
     -- we override the basic colour scheme
     vim.cmd.colorscheme("default")
 
-    -- Extended palette of the default Derp (terminal.sexy) colour scheme
+    -- Extended palette of the kasugano (terminal.sexy) colour scheme
     local c = {
         bg = "#000000",
-        fg = "#c5c8c6",
+        fg = "#c8cacc",
 
-        black = "#555555",
-        white = "#FFFFFF",
-
-        red = "#cc6666",
-        green = "#b5bd68",
-        blue = "#81a2be",
-        yellow = "#f0c674",
-        magenta = "#b294bb",
-        pink = "#e2b5cc",
-        cyan = "#8abeb7",
+        black   = "#1b1b1b",
+        white   = "#edeff2",
+        red     = "#b54036",
+        green   = "#5ab977",
+        yellow  = "#deb566",
+        blue    = "#6a7c93",
+        orange  = "#ffbe64",
+        purple  = "#a4799d",
+        pink    = "#e2b5cc",
+        cyan    = "#3f94a8",
         comment = "#555555",
     }
 
@@ -44,8 +44,8 @@ function M.apply()
     hl("PmenuSbar",    { bg = "#222222" })
     hl("PmenuThumb",   { bg = "#444444" })
 
-    hl("StatusLine",   { fg = c.fg, bg = "#111111" })
-    hl("StatusLineNC", { fg = c.black, bg = "#111111" })
+    hl("StatusLine",   { fg = c.fg, bg = c.bg })
+    hl("StatusLineNC", { fg = c.fg, bg = c.bg })
     hl("VertSplit",    { fg = "#222222" })
     hl("WinSeparator", { fg = "#222222" })
 
@@ -61,11 +61,11 @@ function M.apply()
     hl("String",       { fg = c.green })
     hl("Character",    { fg = c.green })
     hl("Number",       { fg = c.pink })
-    hl("Boolean",      { fg = c.cyan })
+    hl("Boolean",      { fg = c.orange })
     hl("Float",        { fg = c.pink })
 
     hl("Identifier",   { fg = c.white })
-    hl("Function",     { fg = c.cyan })
+    hl("Function",     { fg = c.yellow })
 
     hl("Statement",    { fg = c.yellow, bold = true })
     hl("Conditional",  { fg = c.yellow, bold = true })
@@ -113,7 +113,7 @@ function M.apply()
     hl("@method", { link = "Function" })
 
     hl("@type.builtin", { fg = c.cyan, bold = false })
-    hl("@constructor", { fg = c.magenta })
+    hl("@constructor", { fg = c.purple })
 
     hl("@exception", { fg = c.pink, bold = true })
     hl("@keyword.exception", { fg = c.white, bold = true })

@@ -1,0 +1,16 @@
+// Potentially useful plugins to be installed
+
+[ ] todo-comments 
+    https://github.com/folke/todo-comments.nvim
+
+[ ] compile-mode 
+    https://github.com/ej-shafran/compile-mode.nvim
+
+[ ] shortcut to grab and move line?
+    inspect tsoding and primegean videos nvim setup
+
+[ ] flash
+    https://github.com/folke/flash.nvim
+
+[ ] lazygit
+    https://github.com/jesseduffield/lazygit

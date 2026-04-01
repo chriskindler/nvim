@@ -1,4 +1,4 @@
--- lua/ck/core/derp_theme.lua
+-- lua/ck/core/kasugano.lua
 local M = {}
 
 local function hl(group, opts)
@@ -10,21 +10,21 @@ function M.apply()
     -- we override the basic colour scheme
     vim.cmd.colorscheme("default")
 
-    -- Extended palette of the default Derp (terminal.sexy) colour scheme
+    -- Extended palette of the kasugano (terminal.sexy) colour scheme
     local c = {
         bg = "#000000",
         fg = "#c8cacc",
 
-        black = "#1b1b1b",
-        white = "#edeff2",
-        red = "#6673bf",
-        green = "#3ea290",
-        yellow = "#b0ead9",
-        blue = "#477ab3",
-        orange = "#ffbe64",
-        purple = "#95a7cc",
-        pink = "#e2b5cc",
-        cyan = "#8292b2",
+        black   = "#1b1b1b",
+        white   = "#edeff2",
+        red     = "#dc2566",
+        green   = "#3ea290",
+        yellow  = "#b0ead9",
+        blue    = "#477ab3",
+        orange  = "#ffbe64",
+        purple  = "#95a7cc",
+        pink    = "#e2b5cc",
+        cyan    = "#8292b2",
         comment = "#555555",
     }
 
@@ -44,8 +44,8 @@ function M.apply()
     hl("PmenuSbar",    { bg = "#222222" })
     hl("PmenuThumb",   { bg = "#444444" })
 
-    hl("StatusLine",   { fg = c.fg, bg = "#111111" })
-    hl("StatusLineNC", { fg = c.black, bg = "#111111" })
+    hl("StatusLine",   { fg = c.fg, bg = c.bg })
+    hl("StatusLineNC", { fg = c.fg, bg = c.bg })
     hl("VertSplit",    { fg = "#222222" })
     hl("WinSeparator", { fg = "#222222" })
 

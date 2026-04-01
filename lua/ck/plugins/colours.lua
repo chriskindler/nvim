@@ -1,0 +1,24 @@
+return {
+    -- {
+    --     "Mofiqul/dracula.nvim",
+    --     config = function()
+    --         local dracula = require("dracula")
+    --         dracula.setup({
+    --             italic_comment = false,
+    --         })
+    --         vim.cmd.colorscheme("dracula")
+    --
+    --         -- force no italics on common groups
+    --         local groups = {
+    --             "Keyword", "Function", "Type", "Statement",
+    --             "Conditional", "String",
+    --             "@function.builtin", "@type.builtin",
+    --         }
+    --         for _, group in ipairs(groups) do
+    --             local hl = vim.api.nvim_get_hl(0, { name = group })
+    --             hl.italic = false
+    --             vim.api.nvim_set_hl(0, group, hl)
+    --         end
+    --     end,
+    -- }
+}

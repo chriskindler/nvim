@@ -3,11 +3,13 @@ require("ck.core.keymaps")
 -- require("ck.core.derp_theme").apply()
 -- require("ck.core.nucolors").apply()
 -- require("ck.core.hybrid").apply()
+-- require("ck.core.neutron").apply()
 require("ck.core.kasugano").apply()
 
 vim.api.nvim_create_autocmd("ColorScheme", {
   callback = function()
     require("ck.core.kasugano").apply()
+    -- require("ck.core.neutron").apply()
   end,
 })
 

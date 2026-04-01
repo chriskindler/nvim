@@ -27,6 +27,10 @@ vim.opt.smartcase = true -- case-sensitive when including casing
 vim.opt.termguicolors = true
 vim.opt.background = "dark" -- switch colour scheme to light or dark using :background light/dark
 vim.opt.signcolumn = "yes" -- shift indent
+-- keep 8 lines before end of file
+vim.opt.scrolloff = 8
+-- undo changes in files even after quitting session
+vim.opt.undofile = true
 
 vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
