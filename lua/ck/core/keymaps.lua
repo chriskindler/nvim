@@ -18,3 +18,7 @@ vim.keymap.set("n", "H", "<C-w>h", { desc = "Left split" })
 vim.keymap.set("n", "J", "<C-w>j", { desc = "Down split" })
 vim.keymap.set("n", "K", "<C-w>k", { desc = "Up split" })
 vim.keymap.set("n", "L", "<C-w>l", { desc = "Right split" })
+
+vim.api.nvim_create_user_command("Theme", function()
+    vim.cmd("Telescope colorscheme enable_preview=true")
+end, { desc = "Pick a colorscheme (with preview)" })

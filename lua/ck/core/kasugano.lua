@@ -12,7 +12,7 @@ function M.apply()
 
     -- Extended palette of the kasugano (terminal.sexy) colour scheme
     local c = {
-        bg = "#000000",
+        bg = "#121314",
         fg = "#c8cacc",
 
         black   = "#1b1b1b",
@@ -20,6 +20,7 @@ function M.apply()
         red     = "#dc2566",
         green   = "#3ea290",
         yellow  = "#b0ead9",
+        yellow_import = "#D8D8AC",
         blue    = "#477ab3",
         orange  = "#ffbe64",
         purple  = "#95a7cc",
@@ -32,7 +33,7 @@ function M.apply()
     hl("Normal",       { fg = c.fg, bg = c.bg })
     hl("NormalNC",     { fg = c.fg, bg = c.bg })
     hl("EndOfBuffer",  { fg = c.bg, bg = c.bg })
-    hl("LineNr",       { fg = c.black })
+    hl("LineNr",       { fg = c.comment })
     hl("CursorLineNr", { fg = c.yellow, bold = true })
     hl("CursorLine",   { bg = "#111111" })
     hl("Visual",       { bg = "#282828" })
@@ -74,7 +75,7 @@ function M.apply()
     hl("Operator",     { fg = c.fg })
 
     hl("PreProc",      { fg = c.pink })
-    hl("Include",      { fg = c.red, bold = true})
+    hl("Include",      { fg = c.yellow_import, bold = true})
     hl("Define",       { fg = c.pink })
     hl("Macro",        { fg = c.pink })
 
