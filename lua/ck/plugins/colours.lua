@@ -1,63 +1,56 @@
 return {
-    -- "bluz71/vim-moonfly-colors",
-    "slugbyte/lackluster.nvim",
-    name = "moonfly",
+    "nyoom-engineering/oxocarbon.nvim",
+    name = "oxocarbon",
     lazy = false,
     priority = 1000,
     config = function()
-        -- Pre-colorscheme options
-        vim.g.moonflyItalics = false           -- kill italics on comments etc.
-        vim.g.moonflyVirtualTextColor = true   -- diagnostics in color (nicer)
-        vim.g.moonflyTransparent = false
-        vim.g.moonflyTerminalColors = true
-
-        -- Bold the keyword groups: if/else/return/def/for/while/import/etc.
         vim.api.nvim_create_autocmd("ColorScheme", {
-            -- pattern = "moonfly",
-            pattern = "lackluster",
+            pattern = "oxocarbon",
             callback = function()
-                -- Vim's traditional groups
-                local groups = {
-                    "Statement",    -- if, else, return, while, for, break, continue
-                    "Conditional",  -- if, else, elif
-                    "Repeat",       -- for, while
-                    "Keyword",      -- def, class, lambda, etc. (Python)
-                    "Exception",    -- try, except, raise, finally
-                    "Include",      -- import, from
-                }
-                for _, g in ipairs(groups) do
-                    -- Preserve existing fg/bg, just add bold
-                    local existing = vim.api.nvim_get_hl(0, { name = g, link = false })
-                    existing.bold = true
-                    vim.api.nvim_set_hl(0, g, existing)
-                end
-
-                -- Treesitter equivalents (modern Neovim uses these)
-                local ts_groups = {
+                local bold_groups = {
                     "@keyword",
-                    "@keyword.function",      -- def, function
-                    "@keyword.return",        -- return
-                    "@keyword.conditional",   -- if, else, elif
-                    "@keyword.repeat",        -- for, while
-                    "@keyword.exception",     -- try, except, raise
-                    "@keyword.import",        -- import, from
-                    "@conditional",           -- legacy alias
-                    "@repeat",                -- legacy alias
-                    "@exception",             -- legacy alias
-                    "@include",               -- legacy alias
+                    "@keyword.function",
+                    "@keyword.return",
+                    "@keyword.conditional",
+                    "@keyword.repeat",
+                    "@keyword.exception",
+                    "@keyword.import",
+                    "Statement",
+                    "Conditional",
+                    "Repeat",
+                    "Keyword",
+                    "Exception",
+                    "Include",
                 }
-                for _, g in ipairs(ts_groups) do
-                    local existing = vim.api.nvim_get_hl(0, { name = g, link = false })
-                    -- If a group was just a link (no own colors), get the resolved one
-                    if vim.tbl_isempty(existing) then
-                        existing = vim.api.nvim_get_hl(0, { name = g })
+                for _, g in ipairs(bold_groups) do
+                    local hl = vim.api.nvim_get_hl(0, { name = g, link = false })
+                    if vim.tbl_isempty(hl) then
+                        hl = vim.api.nvim_get_hl(0, { name = g })
                     end
-                    existing.bold = true
-                    existing.link = nil  -- nvim_set_hl ignores link if other attrs are present, but be explicit
-                    vim.api.nvim_set_hl(0, g, existing)
+                    hl.bold = true
+                    hl.italic = false
+                    hl.link = nil
+                    vim.api.nvim_set_hl(0, g, hl)
                 end
             end,
         })
-        vim.cmd.colorscheme("lackluster-hack")
+        vim.cmd.colorscheme("oxocarbon")
     end,
 }
+    -- "rebelot/kanagawa.nvim",
+    -- name = "kanagawa",
+    -- lazy = false,
+    -- priority = 1000,
+    -- config = function()
+    --     require("kanagawa").setup({
+    --         undercurl = true,
+    --         commentStyle = { italic = false },
+    --         functionStyle = { italic = false },
+    --         keywordStyle = { italic = false, bold = true },
+    --         statementStyle = { bold = true },
+    --         typeStyle = { italic = false },
+    --         transparent = false,
+    --         terminalColors = true,
+    --     })
+    --     vim.cmd.colorscheme("kanagawa-dragon")
+    -- end,
