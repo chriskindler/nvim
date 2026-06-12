@@ -13,8 +13,8 @@ return {
         config = function()
             require("mason-lspconfig").setup({
                 ensure_installed = {
-                    "pyright",   -- Python
-                    "clangd",    -- C / C++ / CUDA
+                    "pyright", -- Python
+                    "clangd", -- C / C++ / CUDA
                 },
                 automatic_installation = true,
             })

@@ -3,6 +3,7 @@ return {
     name = "oxocarbon",
     lazy = false,
     priority = 1000,
+
     config = function()
         vim.api.nvim_create_autocmd("ColorScheme", {
             pattern = "oxocarbon",
@@ -32,25 +33,14 @@ return {
                     hl.link = nil
                     vim.api.nvim_set_hl(0, g, hl)
                 end
+
+            -- comments not italic
+            local comment_hl = vim.api.nvim_get_hl(0, { name = "Comment", link = false })
+            comment_hl.italic = false
+            comment_hl.link = nil
+            vim.api.nvim_set_hl(0, "Comment", comment_hl)
             end,
         })
         vim.cmd.colorscheme("oxocarbon")
     end,
 }
-    -- "rebelot/kanagawa.nvim",
-    -- name = "kanagawa",
-    -- lazy = false,
-    -- priority = 1000,
-    -- config = function()
-    --     require("kanagawa").setup({
-    --         undercurl = true,
-    --         commentStyle = { italic = false },
-    --         functionStyle = { italic = false },
-    --         keywordStyle = { italic = false, bold = true },
-    --         statementStyle = { bold = true },
-    --         typeStyle = { italic = false },
-    --         transparent = false,
-    --         terminalColors = true,
-    --     })
-    --     vim.cmd.colorscheme("kanagawa-dragon")
-    -- end,
