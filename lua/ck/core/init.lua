@@ -1,5 +1,6 @@
 require("ck.core.options")
 require("ck.core.keymaps")
+require("ck.lazy")
 -- require("ck.core.derp_theme").apply()
 -- require("ck.core.nucolors").apply()
 -- require("ck.core.hybrid").apply()
@@ -17,8 +18,4 @@ require("ck.core.keymaps")
 --   end,
 -- })
 
--- vim.opt.background = "dark" -- or "light"
--- require("ck.core.apple_colours").setup()
--- Override default colors
---
-
+vim.opt.background = "dark" -- or "light"

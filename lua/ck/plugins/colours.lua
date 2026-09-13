@@ -67,6 +67,6 @@ return {
         vim.keymap.set("n", "<leader>tt", toggle_theme, { desc = "Toggle theme" })
 
         -- Start with default; swap to use_oxocarbon() if preferred
-        use_default()
+        use_oxocarbon()
     end,
 }
